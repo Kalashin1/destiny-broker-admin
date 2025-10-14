@@ -4,9 +4,9 @@ import Appbar from "./appbar";
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 min-h-screen w-screen">
       <Appbar />
-      <div className="min-h-screen">{children}</div>
+      <div>{children}</div>
       {/* <Footer /> */}
     </div>
   );

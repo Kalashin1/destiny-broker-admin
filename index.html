@@ -28,6 +28,66 @@
       left: 100%;
       top: 0;
     }
+
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+    .neon-buy {
+      box-shadow:
+        0 0 5px #0af,
+        0 0 10px #0af,
+        0 0 15px #0af,
+        0 0 20px #0af,
+        inset 0 0 10px rgba(0, 170, 255, 0.2);
+      text-shadow: 0 0 5px #fff, 0 0 10px #0af;
+      animation: pulse-buy 2s infinite;
+    }
+
+    .neon-sell {
+      box-shadow:
+        0 0 5px #f0a,
+        0 0 10px #f0a,
+        0 0 15px #f0a,
+        0 0 20px #f0a,
+        inset 0 0 10px rgba(255, 0, 170, 0.2);
+      text-shadow: 0 0 5px #fff, 0 0 10px #f0a;
+      animation: pulse-sell 2s infinite;
+    }
+
+    @keyframes pulse-buy {
+
+      0%,
+      100% {
+        box-shadow: 0 0 5px #0af, 0 0 10px #0af, 0 0 15px #0af, 0 0 20px #0af, inset 0 0 10px rgba(0, 170, 255, 0.2);
+      }
+
+      50% {
+        box-shadow: 0 0 10px #0af, 0 0 20px #0af, 0 0 30px #0af, 0 0 40px #0af, inset 0 0 15px rgba(0, 170, 255, 0.3);
+      }
+    }
+
+    @keyframes pulse-sell {
+
+      0%,
+      100% {
+        box-shadow: 0 0 5px #f0a, 0 0 10px #f0a, 0 0 15px #f0a, 0 0 20px #f0a, inset 0 0 10px rgba(255, 0, 170, 0.2);
+      }
+
+      50% {
+        box-shadow: 0 0 10px #f0a, 0 0 20px #f0a, 0 0 30px #f0a, 0 0 40px #f0a, inset 0 0 15px rgba(255, 0, 170, 0.3);
+      }
+    }
+
+    .trading-font {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .dark-gradient {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    .glow-text {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
   </style>
 </head>
 
