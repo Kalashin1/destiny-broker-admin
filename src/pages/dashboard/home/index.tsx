@@ -17,6 +17,7 @@ import {
 import { db } from "../../../firebase-setting";
 import { useNavigate } from "react-router-dom";
 import { SCREENS } from "../../../navigation/constant";
+import TradingViewWidget, { Themes } from "react-tradingview-widget";
 import {
   Investment,
   // Plan,
@@ -99,11 +100,20 @@ const Home = () => {
   console.log("user", user);
   return (
     <Layout>
+      <div className="my-4 h-[30rem] p-4">
+        <TradingViewWidget
+          symbol="BINANCE:BTCUSDT"
+          theme={Themes.LIGHT}
+          locale="en"
+          autosize={true}
+        />
+      </div>
       <section className="bg-gray-100 p-6">
         <CurrentEarnings investments={investments} />
       </section>
-      <section className="px-6 my-4 mb-8 py-2">
+      <section className="px-6 my mb-8 py-2">
         <h3 className="text-2xl my-6">Your Investments</h3>
+
         {/* {investments && <CurrentInvestment plans={investments} />} */}
         {investments && (
           <InvestmentTable
