@@ -21,7 +21,7 @@ const Appbar = () => {
           <NavigationMenuList>
             <NavigationMenuItem>
               <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarImage src="/jtrw_logo-removebg-preview (1).png" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </NavigationMenuItem>

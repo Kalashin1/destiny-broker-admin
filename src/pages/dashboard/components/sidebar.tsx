@@ -3,7 +3,7 @@ import {
   SheetContent,
   SheetTrigger,
   SheetHeader,
-  SheetTitle,
+  // SheetTitle,
 } from "../../../components/ui/sheet";
 
 import { Button } from "../../../components/ui/button";
@@ -37,11 +37,15 @@ const Sidebar = () => {
           <i className="fas fa-bars" />
         </Button>
       </SheetTrigger>
-      <SheetContent className="lg:w-3/12" side="left">
+      <SheetContent className="lg:w-3/12 bg-gray-800 text-white" side="left">
         <SheetHeader>
-          <SheetTitle>Cypher</SheetTitle>
+          <img
+            src="/jtrw_logo-removebg-preview (1).png"
+            width={50}
+            height={50}
+          />
         </SheetHeader>
-        <nav className="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 mt-4">
+        <nav className="flex flex-col gap-1 p-2 font-sans text-base font-normal text-white mt-4">
           <div
             role="button"
             tabIndex={0}

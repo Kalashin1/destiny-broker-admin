@@ -2,16 +2,16 @@ import { FC } from "react";
 import { Investment } from "../../../../types";
 
 const CurrentEarnings: FC<{
-  investments: Investment[];
+  investments: Partial<Investment>[];
 }> = ({ investments }) => {
-  const InvestmentComponent: FC<{ investment: Investment }> = ({
+  const InvestmentComponent: FC<{ investment: Partial<Investment> }> = ({
     investment,
   }) => {
     return (
       <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
         <div className="flex justify-between items-start mb-4">
           <h2 className="text-lg font-semibold text-gray-700">
-            {investment.plan.title ?? "Available Balance"}
+            {investment?.plan?.title ?? "Available Balance"}
           </h2>
           <div className="bg-blue-100 p-2 rounded-lg">
             <i className="fas fa-wallet text-blue-500"></i>
@@ -32,7 +32,7 @@ const CurrentEarnings: FC<{
             }).format(investment.earnings ?? 0)}
           </span>
           <span className="text-gray-500">
-            from {investment.plan.title ?? "Available Balance"}
+            from {investment?.plan?.title ?? "Available Balance"}
           </span>
         </div>
       </div>

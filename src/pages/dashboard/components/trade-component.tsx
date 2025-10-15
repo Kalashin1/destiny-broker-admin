@@ -4,20 +4,20 @@ import { useState } from "react";
 const TradingComponent = () => {
   const [lotSize, setLotSize] = useState(0.1);
   const [selectedPair, 
-    // setSelectedPair
+    setSelectedPair
   ] = useState("USD/BTC");
   const [price, 
-    // setPrice
+    setPrice
   ] = useState(1.08745);
 
-  // const currencyPairs = [
-  //   "USD/BTC",
-  //   "USD/ETH",
-  //   "USD/BNB",
-  //   "USD/SOL",
-  //   "USD/TRX",
-  //   "More...",
-  // ];
+  const currencyPairs = [
+    "USD/BTC",
+    "USD/ETH",
+    "USD/BNB",
+    "USD/SOL",
+    "USD/TRX",
+    "More...",
+  ];
 
   const quickLotSizes = [0.01, 0.1, 0.5, 1.0];
 
@@ -29,12 +29,12 @@ const TradingComponent = () => {
     setLotSize(size);
   };
 
-  // const handlePairSelect = (pair: any) => {
-  //   setSelectedPair(pair);
-  //   // In a real app, you'd fetch the current price for the selected pair
-  //   // For demo, we'll just change the price slightly
-  //   setPrice((prevPrice) => prevPrice + (Math.random() - 0.5) * 0.001);
-  // };
+  const handlePairSelect = (pair: any) => {
+    setSelectedPair(pair);
+    // In a real app, you'd fetch the current price for the selected pair
+    // For demo, we'll just change the price slightly
+    setPrice((prevPrice) => prevPrice + (Math.random() - 0.5) * 0.001);
+  };
 
   const handleBuy = () => {
     alert(`BUY order placed: ${lotSize} lots of ${selectedPair} at ${price}`);
@@ -105,8 +105,27 @@ const TradingComponent = () => {
             </div>
           </div>
 
+          <div className="mb-6">
+            <label
+              className="block text-gray-300 text-sm font-medium mb-2"
+              htmlFor="amount"
+            >
+              Enter Amount
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                id="amount"
+                className="w-full bg-gray-800 text-white rounded-lg py-3 px-4 border border-gray-700 focus:outline-none focus:border-blue-500 transition-colors trading-font"
+                name="amount"
+              />
+              
+            </div>
+           
+          </div>
+
           {/* Trade Pair Selection */}
-          {/* <div className="mb-6">
+          <div className="mb-6">
             <label className="block text-gray-300 text-sm font-medium mb-2">
               Trade Pair
             </label>
@@ -125,7 +144,7 @@ const TradingComponent = () => {
                 </button>
               ))}
             </div>
-          </div> */}
+          </div>
 
           {/* Buy/Sell Buttons */}
           <div className="grid grid-cols-2 gap-4">
