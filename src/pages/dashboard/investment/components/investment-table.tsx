@@ -155,14 +155,16 @@ const InvestmentTable: FC<{
         <TableCell>{investment.plan.title}</TableCell>
         <TableCell>{price}</TableCell>
 
-        <TableCell>
+        <TableCell className="min-w-[10rem]">
+          
+
           {addDaysToDate(
             new Date(parseFloat(investment.createAt)),
             plan?.duration!
           ).toDateString()}
         </TableCell>
         {user?.isAdmin && (
-          <TableCell className="grid grid-cols-2">
+          <TableCell className="grid grid-cols-2 space-x-2 min-w-[6rem]">
             <button
               className="cursor-pointer bg-green-600 rounded-full flex items-center justify-center h-8 w-8 shadow-md mr"
               onClick={() => {

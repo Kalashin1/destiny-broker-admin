@@ -10,4 +10,5 @@ export enum SCREENS {
   PLANS = "/plans",
   CREATE_PLAN = "/create-plan",
   USERS_TABLE = "/users",
+  ADD_ADDRESS = '/address'
 }

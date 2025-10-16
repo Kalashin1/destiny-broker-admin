@@ -11,6 +11,7 @@ import ProfilePage from "../pages/dashboard/profile";
 import Plans from "../pages/dashboard/plans";
 import CreatePlan from "../pages/dashboard/plans/create";
 import Users from "../pages/dashboard/users";
+import AddAddress from "../pages/dashboard/address";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: SCREENS.LOGIN,
     element: <Login />,
+  },
+  {
+    path: SCREENS.ADD_ADDRESS,
+    element:<AddAddress />
   },
   {
     path: SCREENS.DASHBOARD,

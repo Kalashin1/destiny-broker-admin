@@ -156,9 +156,11 @@ const Home = () => {
           </div>
         </div>
       ) : (
-        <section className="bg-gray-100 p-4">
-          <CurrentEarnings investments={investments} />
-        </section>
+        user && (
+          <section className="bg-gray-100 p-4">
+            <CurrentEarnings investments={investments} user_id={user.id} />
+          </section>
+        )
       )}
 
       <h3 className="text-2xl px-4 my-6">Trading View</h3>
