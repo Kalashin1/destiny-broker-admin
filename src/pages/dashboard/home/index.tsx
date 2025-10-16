@@ -101,10 +101,10 @@ const Home = () => {
   console.log("user", user);
   return (
     <Layout>
-      <h3 className="text-2xl px-4 my-6">Your Investments</h3>
+      {!user?.isAdmin && (<h3 className="text-2xl px-4 my-6">Your Investments</h3>)}
 
       {investments.length < 1 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mr-2">
+        !user?.isAdmin && <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mr-2">
           <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
             <div className="flex justify-between items-start mb-4">
               <h2 className="text-lg font-semibold text-gray-700">Balance</h2>
@@ -163,8 +163,8 @@ const Home = () => {
         )
       )}
 
-      <h3 className="text-2xl px-4 my-6">Trading View</h3>
-      <div className="my-4 p-4 grid lg:grid-cols-2 grid-cols-1 gap-x-4 lg:justify-between">
+      {!user?.isAdmin && (<div className="my-4 p-4 grid lg:grid-cols-2 grid-cols-1 gap-x-4 lg:justify-between">
+      <h3 className="text-2xl my-6">Trading View</h3>
         <div className="h-[51rem] xl:w-[45rem] lg:w-[38rem] mr-2">
           <TradingViewWidget
             symbol="BINANCE:BTCUSDT"
@@ -176,7 +176,7 @@ const Home = () => {
         <div className="xl:w-[45rem] lg:w-[23rem] flex justify-center items-center md:w-[30rem] w-full mt-8 lg:my-0 relative lg:left-28 xl:left-2 lg:ml-4 lg:block">
           <TradingComponent />
         </div>
-      </div>
+      </div>)}
 
       <div className="flex items-center justify-center p-4"></div>
 
