@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import Select from "react-select";
-import { Plan, } from "../../../../../types";
+import { Plan, User } from "../../../../../types";
 import { query, collection, getDocs, addDoc, where } from "firebase/firestore";
 import { auth, db } from "../../../../../firebase-setting";
 import { useNavigate } from "react-router-dom";
@@ -10,16 +10,19 @@ const CreateInvestmentForm = () => {
   const [plans, setPlans] = useState<Plan[]>([]);
 
   const [selectedPlan, updateSelectedPlan] = useState<Plan | null>(null);
+  const [users, setUsers] = useState<User[]>([]);
+
+  const [selectedUser, updateSelectedUser] = useState<User | null>(null);
 
   const [address, setAddress] = useState("");
 
-
   const navigate = useNavigate();
+
+  const currentUser = auth.currentUser
 
   const createInvestment = async (e: FormEvent) => {
     e.preventDefault();
-    const user = auth.currentUser
-    if (!user) {
+    if (!selectedUser) {
       alert("You have to select a user to continue");
       return;
     }
@@ -30,9 +33,9 @@ const CreateInvestmentForm = () => {
     try {
       await addDoc(collection(db, "investments"), {
         user: {
-          id: user?.uid,
-          email: user?.email,
-          name: user?.displayName,
+          id: selectedUser?.id,
+          email: selectedUser?.email,
+          name: selectedUser?.name,
         },
         earnings: 0,
         capital: parseFloat(selectedPlan.price),
@@ -55,37 +58,50 @@ const CreateInvestmentForm = () => {
       console.log(error);
     }
   };
-  const [network, setNetwork] = useState('BTC')
+  const [network, setNetwork] = useState("BTC");
 
   useEffect(() => {
     const get_address = async () => {
-      console.log("network", network)
-      const q = query(collection(db, "address"), where("network", "==", network));
-      const docSnap = await getDocs(q)
+      console.log("network", network);
+      const q = query(
+        collection(db, "address"),
+        where("network", "==", network)
+      );
+      const docSnap = await getDocs(q);
       const data = docSnap.docs.map((doc) => ({
         id: doc.id,
         address: doc.data().address,
-        network: doc.data().network
-      })) as {address:string, network: string}[]
-      setAddress(data[0].address as string)
-    }
-    get_address()
-  }, [network])
+        network: doc.data().network,
+      })) as { address: string; network: string }[];
+      setAddress(data[0].address as string);
+    };
+    get_address();
+  }, [network]);
 
   useEffect(() => {
     const set_up = async () => {
       const q = query(collection(db, "plans"));
-      
+
+      const userQ = await query(
+        collection(db, "users"),
+        where("isAdmin", "==", false)
+      );
+
       const docSnap = await getDocs(q);
+      const userDocSnap = await getDocs(userQ);
 
       const _plans = docSnap.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       })) as Plan[];
 
-     
+       const _users = userDocSnap.docs.map((doc) => ({
+         id: doc.id,
+         ...doc.data(),
+       })) as User[];
 
       setPlans(_plans);
+      setUsers(_users);
     };
 
     set_up();
@@ -140,7 +156,27 @@ const CreateInvestmentForm = () => {
         </div>
       </div>
       <div className="flex lg:space-x-5 mt-3 lg:flex-row flex-col justify-center items-center">
-        <div className="w-full lg:my-0 my-2">
+        {currentUser?.email?.includes("@admin") && (
+          <div className="w-1/2 lg:my-0 my-2">
+            <Select
+              placeholder="Select a user"
+              options={users.map((user) => ({
+                value: user.id,
+                label: user.name,
+              }))}
+              onChange={(v) => {
+                updateSelectedUser(
+                  users.find((_user) => _user.id === v?.value) as User
+                );
+              }}
+            />
+          </div>
+        )}
+        <div
+          className={`${
+            currentUser?.email?.includes("@admin") ? "w-1/2": 'w-full'
+          } lg:my-0 my-2`}
+        >
           <input
             type="text"
             name="wallet"
@@ -153,11 +189,13 @@ const CreateInvestmentForm = () => {
         </div>
       </div>
 
-      <input
-        type="submit"
-        value="Submit"
-        className="w-full mt-6 bg-blue-600 hover:bg-blue-500 text-white font-semibold p-3 cursor-pointer"
-      />
+      {currentUser?.email?.includes("@admin") && (
+        <input
+          type="submit"
+          value="Submit"
+          className="w-full mt-6 bg-blue-600 hover:bg-blue-500 text-white font-semibold p-3 cursor-pointer"
+        />
+      )}
     </form>
   );
 };

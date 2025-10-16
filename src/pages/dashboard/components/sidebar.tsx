@@ -70,7 +70,7 @@ const Sidebar = () => {
               Add Address
             </div>
           )}
-          {!user?.isAdmin && (
+          { (
             <div
               role="button"
               tabIndex={0}
