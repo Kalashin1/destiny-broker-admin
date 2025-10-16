@@ -81,7 +81,7 @@ const Sidebar = () => {
               Deposit
             </div>
           )}
-          <div
+          {user?.isAdmin && (<div
             role="button"
             tabIndex={0}
             onClick={() => navigate(SCREENS.INVESTMENTS)}
@@ -91,7 +91,7 @@ const Sidebar = () => {
               <i className="fa-solid fa-seedling"></i>
             </div>
             Investments
-          </div>
+          </div>)}
           {user?.isAdmin && (
             <div
               role="button"
