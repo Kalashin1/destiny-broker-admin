@@ -11,6 +11,8 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { db } from "../../../../firebase-setting";
+import { useNavigate } from "react-router-dom";
+import { SCREENS } from "../../../../navigation/constant";
 
 const CurrentEarnings: FC<{
   investments: Partial<Investment>[];
@@ -47,6 +49,8 @@ const CurrentEarnings: FC<{
     set_up(user_id!);
   }, [user_id]);
 
+  const navigate = useNavigate();
+
   const InvestmentComponent: FC<{
     investment: {
       title: string;
@@ -70,12 +74,16 @@ const CurrentEarnings: FC<{
             style: "currency",
           }).format(investment.amount ?? 0)}
         </p>
-        {investment.isDeposit && (<div className="flex items-center text-sm">
-         
-          <button className="underline text-blue-500">
-            Deposit
-          </button>
-        </div>)}
+        {investment.isDeposit && (
+          <div className="flex items-center text-sm">
+            <button
+              className="underline text-blue-500 cursor-pointer"
+              onClick={() => navigate(SCREENS.CREATE_INVESTMENT)}
+            >
+              Deposit
+            </button>
+          </div>
+        )}
       </div>
     );
   };
@@ -93,7 +101,10 @@ const CurrentEarnings: FC<{
         investment={{ amount: investments[0].earnings ?? 0, title: "Profit" }}
       />
       <InvestmentComponent
-        investment={{ amount: transactionTotal ?? 0, title: "Total Withdrawal" }}
+        investment={{
+          amount: transactionTotal ?? 0,
+          title: "Total Withdrawal",
+        }}
       />
     </div>
   );

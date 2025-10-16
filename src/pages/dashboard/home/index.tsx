@@ -101,10 +101,10 @@ const Home = () => {
   console.log("user", user);
   return (
     <Layout>
-      { (<h3 className="text-2xl px-4 my-6">Your Investments</h3>)}
+      {<h3 className="text-2xl px-4 my-6">Your Investments</h3>}
 
       {investments.length < 1 ? (
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mr-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mr-2">
           <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
             <div className="flex justify-between items-start mb-4">
               <h2 className="text-lg font-semibold text-gray-700">Balance</h2>
@@ -114,10 +114,12 @@ const Home = () => {
             </div>
             <p className="text-3xl font-bold text-gray-800 mb-2">$0.00</p>
             <div className="flex items-center text-sm">
-              <span className="text-blue-500 flex items-center mr-2">
-                <i className="fas fa-arrow-up mr-1"></i>0.0%
-              </span>
-              <span className="text-gray-500">from last month</span>
+              <button
+                onClick={() => navigate(SCREENS.CREATE_INVESTMENT)}
+                className="text-blue-500 underline cursor-pointer"
+              >
+                Deposit
+              </button>
             </div>
           </div>
 
@@ -163,20 +165,24 @@ const Home = () => {
         )
       )}
 
-      {(<div className="my-4 p-4 grid lg:grid-cols-2 grid-cols-1 gap-x-4 lg:justify-between">
-      <h3 className="text-2xl my-6">Trading View</h3>
-        <div className="h-[51rem] xl:w-[45rem] lg:w-[38rem] mr-2">
-          <TradingViewWidget
-            symbol="BINANCE:BTCUSDT"
-            theme={Themes.LIGHT}
-            locale="en"
-            autosize={true}
-          />
+      {
+        <div className="my-4 p-4">
+          <h3 className="text-2xl my-6">Trading View</h3>
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-x-4 lg:justify-between">
+            <div className="h-[51rem] xl:w-[45rem] lg:w-[38rem] mr-2">
+              <TradingViewWidget
+                symbol="BINANCE:BTCUSDT"
+                theme={Themes.LIGHT}
+                locale="en"
+                autosize={true}
+              />
+            </div>
+            <div className="xl:w-[45rem] lg:w-[23rem] flex justify-center items-center md:w-[30rem] w-full mt-8 lg:my-0 relative lg:left-28 xl:left-2 lg:ml-4 lg:block">
+              <TradingComponent />
+            </div>
+          </div>
         </div>
-        <div className="xl:w-[45rem] lg:w-[23rem] flex justify-center items-center md:w-[30rem] w-full mt-8 lg:my-0 relative lg:left-28 xl:left-2 lg:ml-4 lg:block">
-          <TradingComponent />
-        </div>
-      </div>)}
+      }
 
       <div className="flex items-center justify-center p-4"></div>
 

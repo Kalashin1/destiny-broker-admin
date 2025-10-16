@@ -78,7 +78,7 @@ const Sidebar = () => {
               <div className="grid place-items-center mr-4">
                 <i className="fa-solid fa-square-plus"></i>
               </div>
-              Create Investment
+              Deposit
             </div>
           )}
           <div

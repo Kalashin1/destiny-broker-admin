@@ -62,7 +62,7 @@ const AddressTable = () => {
                     {ad.network}
                   </td>
 
-                  <td className="border py-4 px-4 lg:px-0 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell flex justify-center items-center">
+                  <td className="py-4 px-4 lg:px-0 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell flex justify-center items-center">
                     <button
                       type="button"
                       className="rounded-full flex justify-self-center justify-center items-center w-8 h-8 bg-red-600 text-white shadow-md"
