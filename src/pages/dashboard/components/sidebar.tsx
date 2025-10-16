@@ -57,17 +57,19 @@ const Sidebar = () => {
             </div>
             Dashboard
           </div>
-          {user?.isAdmin && (<div
-            role="button"
-            tabIndex={0}
-            onClick={() => navigate(SCREENS.ADD_ADDRESS)}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-          >
-            <div className="grid place-items-center mr-4">
-              <i className="fas fa-plus" />
+          {user?.isAdmin && (
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => navigate(SCREENS.ADD_ADDRESS)}
+              className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+            >
+              <div className="grid place-items-center mr-4">
+                <i className="fas fa-plus" />
+              </div>
+              Add Address
             </div>
-            Add Address
-          </div>)}
+          )}
           {!user?.isAdmin && (
             <div
               role="button"
@@ -81,17 +83,32 @@ const Sidebar = () => {
               Deposit
             </div>
           )}
-          {user?.isAdmin && (<div
-            role="button"
-            tabIndex={0}
-            onClick={() => navigate(SCREENS.INVESTMENTS)}
-            className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-          >
-            <div className="grid place-items-center mr-4">
-              <i className="fa-solid fa-seedling"></i>
+          {!user?.isAdmin && (
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => navigate(SCREENS.UPGRADE_ACCOUNT)}
+              className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+            >
+              <div className="grid place-items-center mr-4">
+                <i className="fa-solid fa-arrow-up"></i>
+              </div>
+              Upgrade Account
             </div>
-            Investments
-          </div>)}
+          )}
+          {user?.isAdmin && (
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => navigate(SCREENS.INVESTMENTS)}
+              className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+            >
+              <div className="grid place-items-center mr-4">
+                <i className="fa-solid fa-seedling"></i>
+              </div>
+              Investments
+            </div>
+          )}
           {user?.isAdmin && (
             <div
               role="button"

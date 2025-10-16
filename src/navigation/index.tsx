@@ -12,6 +12,7 @@ import Plans from "../pages/dashboard/plans";
 import CreatePlan from "../pages/dashboard/plans/create";
 import Users from "../pages/dashboard/users";
 import AddAddress from "../pages/dashboard/address";
+import UpgrageAccount from "../pages/dashboard/upgrade-account";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
   {
     path: SCREENS.USERS_TABLE,
     element: <Users />,
+  },
+  {
+    path: SCREENS.UPGRADE_ACCOUNT,
+    element: <UpgrageAccount />,
   },
 ]);
 
