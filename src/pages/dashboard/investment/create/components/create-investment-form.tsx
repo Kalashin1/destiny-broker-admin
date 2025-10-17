@@ -177,7 +177,10 @@ const CreateInvestmentForm = () => {
             currentUser?.email?.includes("@admin") ? "w-1/2": 'w-full'
           } lg:my-0 my-2 flex justify-between relative items-center`}
         >
-          <button className="absolute right-4 top-4" onClick={() => navigator.clipboard.writeText(address)}>
+          <button className="absolute right-4 top-4" onClick={async () => {
+            await navigator.clipboard.writeText(address);
+            alert("Address Copied successfully!")
+          }}>
             <span className="fas fa-clipboard"></span>
           </button>
           <input
