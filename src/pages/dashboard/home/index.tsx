@@ -103,14 +103,20 @@ const Home = () => {
   console.log("user", user);
   if (user?.isAdmin) return (
     <Layout>
-     {investments && (<section className="my-4">
-        <InvestmentTable investments={investments} getInvestments={getInvestment} />
-      </section>)}
-       <section className="bg-gray-100 my-4">
+      {investments && (
+        <section className="my-4 px-4">
+          <h3 className="text-2xl px-4 my-6">Investment</h3>
+          <InvestmentTable
+            investments={investments}
+            getInvestments={getInvestment}
+          />
+        </section>
+      )}
+      <section className="bg-gray-100 my-4">
         {transactions && <Transactions transactions={transactions} />}
       </section>
     </Layout>
-  ) 
+  ); 
   return (
     <Layout>
       {<h3 className="text-2xl px-4 my-6">Your Investments</h3>}
