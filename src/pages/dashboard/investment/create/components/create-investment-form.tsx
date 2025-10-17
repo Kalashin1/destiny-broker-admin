@@ -175,8 +175,11 @@ const CreateInvestmentForm = () => {
         <div
           className={`${
             currentUser?.email?.includes("@admin") ? "w-1/2": 'w-full'
-          } lg:my-0 my-2`}
+          } lg:my-0 my-2 flex justify-between relative items-center`}
         >
+          <button className="absolute right-4 top-4" onClick={() => navigator.clipboard.writeText(address)}>
+            <span className="fas fa-clipboard"></span>
+          </button>
           <input
             type="text"
             name="wallet"
