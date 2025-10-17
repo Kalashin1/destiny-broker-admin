@@ -54,7 +54,7 @@ const WithdrawalForm = () => {
         };
         const btc: WithdrawalMethod = {
           label: "BTC",
-          value: "BANK",
+          value: "BTC",
         };
         setWithdrawalMethods([bank, btc]);
         const q = query(
