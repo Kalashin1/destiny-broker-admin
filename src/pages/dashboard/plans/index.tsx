@@ -24,10 +24,10 @@ const Plans = () => {
 
   return (
     <Layout>
-      <div className="px-12 pt-8">
+      <div className="px-4 pt-8">
         <h3 className="text-2xl font-bold">Current Investments</h3>
       </div>
-      <section className="px-12 min-h-screen overflow-y-scroll">
+      <section className="min-h-screen overflow-y-scroll">
         {plans && <CurrentInvestment set_up={set_up} plans={plans} />}
       </section>
     </Layout>

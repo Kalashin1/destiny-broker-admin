@@ -38,24 +38,19 @@ const Home = () => {
   const navigate = useNavigate();
 
   const getInvestment = async () => {
-    let q: Query<DocumentData, DocumentData>;
     try {
       if (user && user.isAdmin) {
-        q = query(collection(db, "investments"));
-      } else {
-        q = query(
-          collection(db, "investments"),
-          where("user.id", "==", user?.id)
-        );
+        const q = query(collection(db, "investments"));
+        const _docRefs = await getDocs(q);
+        const _investments = _docRefs.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as Investment[];
+        setInvestments(_investments);
       }
-      const _docRefs = await getDocs(q);
-      const _investments = _docRefs.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })) as Investment[];
-      setInvestments(_investments);
     } catch (error) {
       alert("error getting investments");
+      console.log(error)
     }
   };
 
