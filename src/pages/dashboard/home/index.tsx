@@ -27,36 +27,37 @@ import {
 // import InvestmentTable from "../investment/components/investment-table";
 import CurrentEarnings from "./components/current-earnings";
 import TradingComponent from "../components/trade-component";
+import InvestmentTable from "../investment/components/investment-table";
 
 const Home = () => {
   const [user, setUser] = useState<User>();
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [investments, setInvestments] = useState<Partial<Investment>[]>([]);
+  const [investments, setInvestments] = useState<Investment[]>([]);
   // const [plans, setPlans] = useState<Plan[]>([]);
 
   const navigate = useNavigate();
 
-  // const getInvestment = async () => {
-  //   let q: Query<DocumentData, DocumentData>;
-  //   try {
-  //     if (user && user.isAdmin) {
-  //       q = query(collection(db, "investments"));
-  //     } else {
-  //       q = query(
-  //         collection(db, "investments"),
-  //         where("user.id", "==", user?.id)
-  //       );
-  //     }
-  //     const _docRefs = await getDocs(q);
-  //     const _investments = _docRefs.docs.map((doc) => ({
-  //       id: doc.id,
-  //       ...doc.data(),
-  //     })) as Investment[];
-  //     setInvestments(_investments);
-  //   } catch (error) {
-  //     alert("error getting investments");
-  //   }
-  // };
+  const getInvestment = async () => {
+    let q: Query<DocumentData, DocumentData>;
+    try {
+      if (user && user.isAdmin) {
+        q = query(collection(db, "investments"));
+      } else {
+        q = query(
+          collection(db, "investments"),
+          where("user.id", "==", user?.id)
+        );
+      }
+      const _docRefs = await getDocs(q);
+      const _investments = _docRefs.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })) as Investment[];
+      setInvestments(_investments);
+    } catch (error) {
+      alert("error getting investments");
+    }
+  };
 
   const set_up = async (id: string) => {
     try {
@@ -96,9 +97,20 @@ const Home = () => {
 
   useEffect(() => {
     set_up(localStorage.getItem("user_id")!);
+    getInvestment()
   }, [navigate]);
 
   console.log("user", user);
+  if (user?.isAdmin) return (
+    <Layout>
+     {investments && (<section className="my-4">
+        <InvestmentTable investments={investments} getInvestments={getInvestment} />
+      </section>)}
+       <section className="bg-gray-100 my-4">
+        {transactions && <Transactions transactions={transactions} />}
+      </section>
+    </Layout>
+  ) 
   return (
     <Layout>
       {<h3 className="text-2xl px-4 my-6">Your Investments</h3>}
