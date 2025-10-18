@@ -123,8 +123,8 @@ const WithdrawalForm = () => {
         Request Withdrawal
       </h3>
       <p className="text-gray-600">Request a new withdrawal</p>
-      <div className="lg:flex lg:space-x-5 mt-3">
-        <div className="lg:w-1/2 w-full">
+      <div className="lg:flex lg:space-x-5 my-3">
+        <div className="lg:w-1/2 w-full my-2 lg:my-0">
           <Select
             options={investments.map((investment) => ({
               value: investment.id,
@@ -138,7 +138,7 @@ const WithdrawalForm = () => {
             placeholder="Select the plan you'd like to withdraw from"
           />
         </div>
-        <div className="lg:w-1/2 w-full">
+        <div className="lg:w-1/2 w-full my-2 lg:my-0">
           <Select
             options={withdrawalMethods}
             onChange={(v) => updateSelectedWithdawalMethod(v?.value!)}
@@ -149,7 +149,7 @@ const WithdrawalForm = () => {
 
       <div className="lg:flex py-1 lg:space-x-2">
         {selectedWithdrawalMethod === "BANK" && (
-          <div className="lg:w-1/2 w-full">
+          <div className="lg:w-1/2 w-full my-2 lg:my-0">
             <input
               type="text"
               name="bank"
@@ -160,7 +160,7 @@ const WithdrawalForm = () => {
           </div>
         )}
         {selectedWithdrawalMethod === "BANK" && (
-          <div className="lg:w-1/2 w-full">
+          <div className="lg:w-1/2 w-full my-2 lg:my-0">
             <input
               type="text"
               name="account"
