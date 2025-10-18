@@ -124,7 +124,7 @@ const WithdrawalForm = () => {
       </h3>
       <p className="text-gray-600">Request a new withdrawal</p>
       <div className="flex space-x-5 mt-3">
-        <div className="w-1/2">
+        <div className="lg:w-1/2 w-full">
           <Select
             options={investments.map((investment) => ({
               value: investment.id,
@@ -138,7 +138,7 @@ const WithdrawalForm = () => {
             placeholder="Select the plan you'd like to withdraw from"
           />
         </div>
-        <div className="w-1/2">
+        <div className="lg:w-1/2 w-full">
           <Select
             options={withdrawalMethods}
             onChange={(v) => updateSelectedWithdawalMethod(v?.value!)}
@@ -149,18 +149,18 @@ const WithdrawalForm = () => {
 
       <div className="flex py-1 space-x-2">
         {selectedWithdrawalMethod === "BANK" && (
-          <div className="w-1/2">
+          <div className="lg:w-1/2 w-full">
             <input
               type="text"
               name="bank"
               id=""
-              placeholder="Enter Bank Account orBlockchain Protocol"
+              placeholder="Enter Bank Account or Blockchain Protocol"
               className="border p-2 w-full mt-3"
             />
           </div>
         )}
         {selectedWithdrawalMethod === "BANK" && (
-          <div className="w-1/2">
+          <div className="lg:w-1/2 w-full">
             <input
               type="text"
               name="account"
