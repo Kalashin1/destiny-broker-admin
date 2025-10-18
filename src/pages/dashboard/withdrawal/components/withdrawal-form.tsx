@@ -123,7 +123,7 @@ const WithdrawalForm = () => {
         Request Withdrawal
       </h3>
       <p className="text-gray-600">Request a new withdrawal</p>
-      <div className="flex space-x-5 mt-3">
+      <div className="lg:flex space-x-5 mt-3">
         <div className="lg:w-1/2 w-full">
           <Select
             options={investments.map((investment) => ({
@@ -147,7 +147,7 @@ const WithdrawalForm = () => {
         </div>
       </div>
 
-      <div className="flex py-1 space-x-2">
+      <div className="lg:flex py-1 space-x-2">
         {selectedWithdrawalMethod === "BANK" && (
           <div className="lg:w-1/2 w-full">
             <input
