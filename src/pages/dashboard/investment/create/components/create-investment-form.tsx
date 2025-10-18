@@ -157,7 +157,7 @@ const CreateInvestmentForm = () => {
       </div>
       <div className="flex lg:space-x-5 mt-3 lg:flex-row flex-col justify-center items-center">
         {currentUser?.email?.includes("@admin") && (
-          <div className="w-1/2 lg:my-0 my-2">
+          <div className="lg:w-1/2 w-full lg:my-0 my-2">
             <Select
               placeholder="Select a user"
               options={users.map((user) => ({
@@ -174,7 +174,7 @@ const CreateInvestmentForm = () => {
         )}
         <div
           className={`${
-            currentUser?.email?.includes("@admin") ? "w-1/2": 'w-full'
+            currentUser?.email?.includes("@admin") ? "lg:w-1/2 w-full": 'w-full'
           } lg:my-0 my-2 flex justify-between relative items-center`}
         >
           <button className="absolute right-4 top-4" onClick={async () => {
