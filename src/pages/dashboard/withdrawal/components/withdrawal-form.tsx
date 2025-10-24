@@ -154,12 +154,12 @@ const WithdrawalForm = () => {
               type="text"
               name="bank"
               id=""
-              placeholder="Enter Bank Account or Blockchain Protocol"
+              placeholder="Enter Bank Account"
               className="border p-2 w-full mt-3"
             />
           </div>
         )}
-        {selectedWithdrawalMethod === "BANK" && (
+        {(
           <div className="lg:w-1/2 w-full my-2 lg:my-0">
             <input
               type="text"
