@@ -1,4 +1,4 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { SCREENS } from "../../../../navigation/constant";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -10,8 +10,11 @@ const LoginForm = () => {
 
   const formRef = useRef<HTMLFormElement | null>(null);
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
+    setIsLoading(true)
     const {
       email: { value: email },
       password: { value: password },
@@ -24,6 +27,7 @@ const LoginForm = () => {
       );
       localStorage.setItem("user_id", user.uid);
       const docRef = await getDoc(doc(db, "users", user.uid));
+      setIsLoading(false);
       if (docRef.exists()) {
         naivgate(SCREENS.DASHBOARD);
       } else {
@@ -96,7 +100,7 @@ const LoginForm = () => {
         type="submit"
         className="block w-full bg-indigo-600 mt-5 py-2 rounded-2xl hover:bg-indigo-700 hover:-translate-y-1 transition-all duration-500 text-white font-semibold mb-2"
       >
-        Login
+        {isLoading ? <span> Loading <i className="fas fa-spinner fa-spin text-lg fa-3x"></i></span> : "Login"}
       </button>
       <div className="mt-4">
         <Link
