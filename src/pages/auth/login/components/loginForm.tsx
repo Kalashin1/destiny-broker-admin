@@ -35,6 +35,7 @@ const LoginForm = () => {
         return;
       }
     } catch (error) {
+      setIsLoading(false);
       alert("error logging in");
       // handle error later
       console.log(error);
