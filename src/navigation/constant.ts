@@ -11,5 +11,6 @@ export enum SCREENS {
   CREATE_PLAN = "/create-plan",
   USERS_TABLE = "/users",
   ADD_ADDRESS = '/address',
-  UPGRADE_ACCOUNT = "/upgrade-account"
+  UPGRADE_ACCOUNT = "/upgrade-account",
+  FORGOT_PASSWORD = "/forgot-password"
 }

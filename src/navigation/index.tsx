@@ -71,6 +71,10 @@ const router = createBrowserRouter([
     path: SCREENS.UPGRADE_ACCOUNT,
     element: <UpgrageAccount />,
   },
+  {
+    path: SCREENS.FORGOT_PASSWORD,
+    element: <UpgrageAccount />,
+  },
 ]);
 
 export default router;
