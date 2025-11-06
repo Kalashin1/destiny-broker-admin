@@ -56,7 +56,15 @@ const WithdrawalForm = () => {
           label: "BTC",
           value: "BTC",
         };
-        setWithdrawalMethods([bank, btc]);
+        const eth: WithdrawalMethod = {
+          label: "ETH",
+          value: "ETH",
+        };
+        const trx: WithdrawalMethod = {
+          label: "TRX",
+          value: "TRX",
+        };
+        setWithdrawalMethods([bank, btc, trx, eth]);
         const q = query(
           collection(db, "investments"),
           where("user.id", "==", docRef.id)
