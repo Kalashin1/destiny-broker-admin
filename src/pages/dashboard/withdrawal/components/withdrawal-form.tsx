@@ -61,8 +61,8 @@ const WithdrawalForm = () => {
           value: "ETH",
         };
         const trx: WithdrawalMethod = {
-          label: "TRX",
-          value: "TRX",
+          label: "USDT (Tron)",
+          value: "USDT",
         };
         setWithdrawalMethods([bank, btc, trx, eth]);
         const q = query(

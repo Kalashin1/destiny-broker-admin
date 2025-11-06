@@ -174,7 +174,8 @@ const Transactions: FC<{ transactions: Transaction[] }> = ({
                     </div>
                   </td>
                   {user?.isAdmin && transaction.status === "PENDING" && (
-                    <td className="whitespace-no-wrap w-4/12 py-4 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell grid grid-cols-2 mr-4">
+                    <td className="whitespace-no-wrap w-4/12 py-4 text-sm font-normal text-gray-500 sm:px-6 lg:table-cell grid grid-cols-2 mr-4
+                    ">
                       <button
                         className="rounded-full w-8 h-8 bg-green-600 text-white shadow-md mr-4"
                         type="button"
