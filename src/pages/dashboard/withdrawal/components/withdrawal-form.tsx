@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { FormEvent, useContext, useEffect, useRef, useState } from "react";
 import Select from "react-select";
-import { Investment, Plan, User } from "../../../../types";
+import { Investment, User } from "../../../../types";
 import {
   addDoc,
   collection,
@@ -27,7 +27,7 @@ const WithdrawalForm = () => {
 
   const [user, setUser] = useState<User | null>(null);
 
-  const [selectedInvestment, setSelectedInvestment] =
+  const [, setSelectedInvestment] =
     useState<Investment | null>(null);
 
 
@@ -93,13 +93,10 @@ const WithdrawalForm = () => {
     const {
       amount: { value: amount },
     } = formRef.current!;
-    const planRef = await getDoc(
-      doc(db, "plans", selectedInvestment?.plan.id!)
-    );
-    const plan = { id: planRef.id, ...planRef.data() } as Plan;
-    
+    const withdrawalAmount = investments.map((i) => i.earnings + i.capital).reduce((a, b) => a + b)
+  
     try {
-      if (amount > parseFloat(plan.ROI)) {
+      if (!withdrawalAmount || withdrawalAmount < amount) {
         alert("Withdrawal amount exceeds total ROI");
         return;
       }
@@ -173,7 +170,7 @@ const WithdrawalForm = () => {
               type="text"
               name="account"
               id=""
-              placeholder="Enter Account or BTC address"
+              placeholder="Enter address"
               className="border p-2 w-full mt-3"
             />
           </div>
