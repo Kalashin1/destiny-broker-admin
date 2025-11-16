@@ -35,7 +35,7 @@ const AddressForm = () => {
         Request Withdrawal
       </h3>
       <p className="text-gray-600">Add Address</p>
-      <div className="flex space-x-5 mt-3 items-center justify-between">
+      <div className="md:flex md:space-x-5 mt-3 items-center justify-between">
         <div className="lg:w-1/2">
           <input
             type="text"
