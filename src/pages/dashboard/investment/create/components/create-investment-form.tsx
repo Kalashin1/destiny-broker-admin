@@ -177,7 +177,7 @@ const CreateInvestmentForm = () => {
             currentUser?.email?.includes("@admin") ? "lg:w-1/2 w-full": 'w-full'
           } lg:my-0 my-2 flex justify-between relative items-center`}
         >
-          <button className="absolute right-4 top-4" onClick={async () => {
+          <button className="absolute h-8 w-8 flex items-center justify-center right-4 bg-purple-800 p-4 rounded-full text-white top-4" onClick={async () => {
             await navigator.clipboard.writeText(address);
             alert("Address Copied successfully!")
           }}>
