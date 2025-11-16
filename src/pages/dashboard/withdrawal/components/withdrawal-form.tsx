@@ -97,9 +97,9 @@ const WithdrawalForm = () => {
       doc(db, "plans", selectedInvestment?.plan.id!)
     );
     const plan = { id: planRef.id, ...planRef.data() } as Plan;
-    const planTotal = parseFloat(plan.price) * (100 / parseFloat(plan.ROI));
+    
     try {
-      if (amount > planTotal) {
+      if (amount > parseFloat(plan.ROI)) {
         alert("Withdrawal amount exceeds total ROI");
         return;
       }
