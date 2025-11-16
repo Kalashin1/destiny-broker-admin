@@ -24,7 +24,7 @@ const Plans = () => {
 
   return (
     <Layout>
-      <div className="px-4 pt-8">
+      <div className="px-4 md:pt-8 pt-4">
         <h3 className="text-2xl font-bold">Current Investments</h3>
       </div>
       <section className="min-h-screen overflow-y-scroll">

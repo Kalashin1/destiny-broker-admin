@@ -48,11 +48,11 @@ const Transactions = () => {
 
   return (
     <Layout>
-      <section className="px-6 py-2">
-        <div className="px-12 mt-8">
+      <section className="md:px-6 px-2 py-2">
+        <div className="md:px-12 md:mt-8 mt-2">
           <h3 className="text-2xl font-bold">Your Investments</h3>
         </div>
-        <section className="px-12 py-6 h-screen">
+        <section className="md:px-12 px-2 md:py-6 h-screen">
           <div className="bg-white">
             {transactions && <TransactionTable transactions={transactions} />}
           </div>
