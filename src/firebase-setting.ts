@@ -9,13 +9,13 @@ import { getAuth } from "firebase/auth";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAU7yPNxBMGTQsy4tO1eH2rcCZM_488wYE",
-  authDomain: "therealworld-6861c.firebaseapp.com",
-  projectId: "therealworld-6861c",
-  storageBucket: "therealworld-6861c.firebasestorage.app",
-  messagingSenderId: "293283707069",
-  appId: "1:293283707069:web:65ec0a39058ecd177e9fd4",
-  measurementId: "G-SRM3JQTK0B",
+  apiKey: "AIzaSyCr0m2epn7wRGZMRl4D5BpemRGJCQGCN8Q",
+  authDomain: "capital-trade-1e7d5.firebaseapp.com",
+  projectId: "capital-trade-1e7d5",
+  storageBucket: "capital-trade-1e7d5.firebasestorage.app",
+  messagingSenderId: "882823658121",
+  appId: "1:882823658121:web:9c525317f218cebeda2458",
+  measurementId: "G-SQ0Q4WK8NB"
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
